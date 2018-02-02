@@ -1,0 +1,4 @@
+<% content_for :title, "#{@category.name}"+" · "%>
+<%= render @category.articles.order(created_at: :desc) %>
+<%= link_to_prev_page @articles, '上一页', :class=>"button-default" %>
+<%= link_to_next_page @articles, '下一页', :class=>"button-default"  %>

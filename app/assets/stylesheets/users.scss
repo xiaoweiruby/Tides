@@ -1,0 +1,17 @@
+form{
+    margin: 0 8px 0 0;
+    padding: 0 10px 0 5px;
+    /*white-space:nowrap;*/
+}
+label{
+    font-size:12px;
+    margin: 0 5px 0 0;
+    white-space: nowrap;
+}
+#notice{
+    margin-left: 5px;
+}
+.field_with_errors{
+    border-radius: 5px;
+    color: #f95d5d;
+}

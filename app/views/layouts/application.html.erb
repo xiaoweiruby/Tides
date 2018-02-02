@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
+<meta content="Network Security, Hackers, Information Technology" name="keywords">
+<title><%= yield(:title) %>潮汐</title>
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track'=> true %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track'=>true %>
+<%= csrf_meta_tags %>
+</head>
+<body>
+<div class="header">
+  <div class="col-mb-12 col-12 row">
+    <nav class="nav-menu">
+      <%= link_to "∞", "/",:class=> current_active("articles") %>
+      <% Category.all.each do |category| %>
+        <%= link_to category.name, category, :class=> current_active("categories/#{category.id}") %>
+      <% end %>
+      <div class="nav-menu-right">
+      <% if @current_user %>
+        <%= link_to @current_user.name, @current_user,:class=> current_active("users") %>
+        <%= link_to '注销', logout_url %>
+      <% else %>
+        <%= link_to '登录', login_url,:class=> current_active("login") %>
+        <%= link_to '注册', register_url,:class=> current_active("register") %>
+      <% end %>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<div class="wrapper">
+  <div class="panel-left">
+      <!--something here-->
+  </div>
+
+    <div class="container">
+      <div class="col-mb-12 col-12">
+        <p class="notice"><%= notice %></p>
+        <%= yield %>
+      </div>
+    </div>
+
+  <div class="panel-right">
+    <ul class="panel">
+      <% if @current_user %>
+        <li><%= link_to '我的文章', user_articles_path( @current_user ) %></li>
+        <li><%= link_to '发布文章', new_article_path %></li>
+        <li><%= link_to '修改信息', edit_user_path( @current_user ) %></li>
+        <% if @current_user.is_super_admin %>
+          <li><%= link_to '分类管理', categories_path %></li>
+          <li><%= link_to '用户管理', users_path %></li>
+          <li><%= link_to '评论管理', comments_path %></li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+
+</div>
+<div class="footer">
+  <div class="footer-text">
+    <marquee scrollamount="2" direction="right" behavior="alternate" >
+      <span>[ 2017 ~ <%= Time.now.year %> &copy; 潮汐 · http://tides.pro ]</span>
+    </marquee>
+  </div>
+</div>
+</body>
+</html>

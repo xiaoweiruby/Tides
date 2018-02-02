@@ -1,0 +1,24 @@
+<%= form_for(@article) do |f| %>
+  <% if @article.errors.any? %>
+    <% @article.errors.messages.each do |message| %>
+      <%= message.last[0] %>
+    <% end %>
+  <% end %>
+
+  <div>
+    <%= f.text_field :title, :class=>"simditor-title", placeholder: "标题",required: true %>
+    <br/><br/>
+    发表在 <%= f.select(:category_id, options_for_select(@categories),{},{:class=>""})%>
+  </div>
+
+  <div>
+    <%= f.text_field :content, :type=> 'hidden', size:'60x55' %>
+  </div>
+
+  <br/>
+
+  <div>
+    <%= link_to '算了', :back %>
+    <%= f.submit '好了, 发布',:class=>"right" %>
+  </div>
+<% end %>

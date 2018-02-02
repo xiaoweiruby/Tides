@@ -1,0 +1,10 @@
+<%= form_for([@article, @article.comments.build]) do |f| %>
+  <% if @current_user %>
+    <%= f.hidden_field :article_id, :value => @article.id %>
+    <%= f.hidden_field :comment_id %>
+    <%= f.text_area :content, :value=> @comment ? @comment.content : "", placeholder: "留下您的高见", size:'50x3'  %>
+    <%= f.submit "发表" %>
+  <% else %>
+    <em><%= link_to '登录即可发表评论', login_url %></em>
+  <% end %>
+<% end %>

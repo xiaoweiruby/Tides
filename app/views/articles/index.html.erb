@@ -1,0 +1,7 @@
+<% if @user %>
+  <% content_for :title, "#{@user.name}的文章"+" · "%>
+  <h3><%= @user.name %>的文章</h3>
+<% end %>
+<%= render @articles %>
+<%= link_to_prev_page @articles, '上一页', :class=>"button-default" %>
+<%= link_to_next_page @articles, '下一页', :class=>"button-default" %>

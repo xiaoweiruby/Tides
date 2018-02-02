@@ -1,0 +1,12 @@
+<% content_for :title, "登录"+" · " %>
+<%= form_for :user, url: login_url do |f| %>
+  <div class="col-4 col-mb-12">
+      <%= f.text_field :name,placeholder: "用户名/手机号码/电子邮箱" %>
+  </div>
+  <div class="col-4 col-mb-12">
+      <%= f.password_field :password,placeholder: "密码" %>
+  </div>
+  <div class="col-4 col-mb-12">
+      <%= f.submit '登录' %>
+  </div>
+<% end %>

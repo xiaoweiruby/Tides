@@ -1,0 +1,20 @@
+<% content_for :title, "用户管理"+" · " %>
+<table>
+  <tbody>
+  <tr>
+  <td>用户</td>
+  <td>邮箱</td>
+  <td>电话</td>
+  <td>操作</td>
+  </tr>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to user.name, user %></td>
+        <td><%= user.email %></td>
+        <td><%= user.telphone %></td>
+        <td><%= link_to '修改', edit_user_path(user) %></td>
+        <td><%= link_to '删除', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

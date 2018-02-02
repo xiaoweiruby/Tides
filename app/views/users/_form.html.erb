@@ -1,0 +1,32 @@
+<%= form_for(@user) do |f| %>
+    <% if @user.errors.any? %>
+        <%#= pluralize(@user.errors.count, "error") %>
+        <% @user.errors.messages.each do |message| %>
+            <label><%= message.last[0] %></label>
+        <% end %>
+    <% end %>
+    <div class="col-4 col-mb-12">
+        <%= f.label :name, "名字" %>
+        <%= f.text_field :name, required: true %>
+    </div>
+    <div class="col-4 col-mb-12">
+        <%= f.label :password, "密码" %>
+        <%= f.password_field :password, :value => @user.password, required: true %>
+    </div>
+    <div class="col-4 col-mb-12">
+        <%= f.label :password_confirmation, "密码" %>
+        <%= f.password_field :password_confirmation, :value => @user.password, placeholder:"再确认一下",required: true %>
+    </div>
+    <div class="col-4 col-mb-12">
+        <%= f.label :telphone, "手机" %>
+        <%= f.text_field :telphone, required: true %>
+    </div>
+    <div class="col-4 col-mb-12">
+        <%= f.label :email, "邮箱" %>
+        <%= f.email_field :email, required: true %>
+    </div>
+    <div>
+        <%= f.submit '提交', :class=>'button-default'%>
+        <%= link_to '取消', :back, :class=>'button-default' %>
+    </div>
+<% end %>

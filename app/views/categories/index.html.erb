@@ -1,0 +1,20 @@
+<% content_for :title, "内容分类"+" · "%>
+<div class="categories">
+  <% @categories.each do |category| %>
+    <div class="category">
+      <%= link_to category.name, category %>
+      <% if @current_user %>
+        <% if @current_user.is_super_admin %>
+          <%= link_to '编辑', edit_category_path(category),:class=>"button-small" %>
+            <%= link_to '删除', category, method: :delete, data: { confirm: '删除后，该分类下的文章也将一并删除，确定?' },:class=>"button-small" %>
+          <% end %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <% if @current_user %>
+    <div class="category">
+      <%= link_to "新建分类", new_category_path,:class=>"button-default" if @current_user.is_super_admin %>
+    </div>
+  <% end %>
+</div>

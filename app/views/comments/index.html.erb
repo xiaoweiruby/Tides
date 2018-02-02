@@ -1,0 +1,12 @@
+<% content_for :title, "评论列表"+" · " %>
+<% @comments.each do |cmt| %>
+  <em><%= link_to cmt.article.title, cmt.article %></em>
+  <p>
+    <%= link_to cmt.user.name, cmt.user %>:
+    <%= link_to "@#{cmt.comment.user.name}", cmt.comment.user if cmt.comment %>
+    <%= cmt.content %>
+  </p>
+  <%= link_to '编辑', edit_comment_path(cmt) %>
+  <%= link_to '删除', cmt, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <hr/>
+<% end %>

@@ -1,0 +1,8 @@
+<% content_for :title, "修改评论 - " %>
+<%= form_for(@comment) do |f| %>
+  <%= f.hidden_field :article_id %>
+  <%= f.hidden_field :comment_id %>
+  <%= f.text_area :content, size:'50x3'  %>
+  <%= f.submit "好了" %>
+  <%= link_to '不改了', @article %>
+<% end %>

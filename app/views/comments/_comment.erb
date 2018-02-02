@@ -1,0 +1,14 @@
+<div class="comment_body" title="回复" >
+  <p>
+    <%= link_to "@#{comment.comment.user.name}", comment.comment.user if comment.comment %>
+    <%= comment.content %>
+  </p>
+  <em><%= link_to comment.user.name, comment.user %> <%= comment.created_at.strftime("%Y/%m/%d %H:%M:%S") %></em>
+  <% if @current_user %>
+    <%= link_to "回复", "#", {:class=>"button-small", 'data-comment-id' => comment.id,'data-comment-user'=>comment.user.name } %>
+  <% end %>
+  <% if comment.user == @current_user %>
+    <%= link_to "编辑", edit_comment_path( comment ), :class=>"button-small" %>
+    <%= link_to "删除", [comment.article, comment], method: :delete, data: { confirm: '删除这条评论吗？' }, :class=>"button-small" %>
+  <% end %>
+</div>

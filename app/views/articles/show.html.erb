@@ -1,0 +1,18 @@
+<% content_for :title, @article.title+" · " %>
+<div class="article">
+  <div class="article-title"><%= link_to @article.title, @article %></div>
+  <div class="article-meta">
+    <b><%= link_to "#{@article.user.name}", @article.user %> &hearts; <%= link_to "#{@article.category.name}", @article.category %></b>
+    <b><%= @article.created_at.strftime("%Y/%m/%d %H:%M:%S") %></b> |
+      <%= link_to "返回", :back, :class=>"button-small" %>
+      <%= link_to '编辑', edit_article_path(@article),:class=>"button-small" if @edit_tag %>
+      <%= link_to '删除', @article, :class=>"button-small", method: :delete, data: { confirm: '删除这篇文章?' } if @edit_tag %>
+  </div>
+  <div class="article-content">
+    <%= @article.content.html_safe %>
+  </div>
+</div>
+<div id="comments">
+  <%= render @article.comments %>
+</div>
+<%= render 'comments/form' %>

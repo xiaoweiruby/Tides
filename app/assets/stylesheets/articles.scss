@@ -1,0 +1,67 @@
+// Place all the styles related to the Articles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.article{
+  width: 100%;
+  padding: 10px;
+  margin: 0 0 15px 0;
+  border-bottom: 1px solid #DDDDDD;
+  border-radius: 5px;
+  background-color: #FFFFFF;
+}
+.article-title{
+  font-size: 26px;
+}
+.article-meta{
+  font-size: 12px;
+  margin: 20px 0 20px 0;
+}
+.article-content{
+  font-size: 16px;
+}
+.articles{
+  width: 100%;
+}
+.articles ul{
+  margin: 0 2% 1% 0;
+  padding: 5px;
+  width: 100%;
+}
+.articles li{
+  list-style: none;
+  width: 42%;
+  padding: 10px 15px 10px 15px;
+  margin: 6px 12px 6px 12px;
+  float: left;
+  border-radius: 3px;
+  background-color: #FFFFFF;
+}
+.articles li:hover{
+  transition: 0.5s;
+  background-color: #CCCCCC;
+}
+.cover-image img{
+  width: 252px;
+}
+.simditor{
+  margin: 15px 0 0 0;
+  padding: 2px;
+  width: 100%;
+  background-color: #EEEEEE;
+  border-radius: 5px;
+}
+.simditor-body{
+  margin: 1px;
+  padding: 0;
+  border:0px solid #E9E9E9;
+  border-radius: 5px;
+}
+.simditor-toolbar{
+  margin: 0;
+  border-radius: 5px;
+}
+.simditor-title{
+  font-size: 20px;
+  width: 100%;
+  margin: 10px;
+}

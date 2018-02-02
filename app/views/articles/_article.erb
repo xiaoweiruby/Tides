@@ -1,0 +1,14 @@
+<div class="article">
+  <div class="article-title"><%= link_to article.title, category_article_path(article.category,article), :class=>"article-title" %></div>
+  <div class="article-meta">
+      <b><%= article.created_at.strftime("%Y/%m/%d") %> &hearts; <%= link_to "#{article.user.name}", article.user %></b>
+  </div>
+  <div class="article-content">
+    <% if article.content.include?"<img" %>
+      <img src="<%= article.content.scan( /<img[\S\s]*?src="(.*?)"[\S\s]*?>/ ).first.to_s.delete('[""]') %>" class="cover-img"/>
+      <br/>
+    <% end %>
+    <%= strip_tags(article.content)[0,512] %>
+    <%= link_to "阅读全文", article,:class=>"button-small" if article.content.size>512 %>
+  </div>
+</div>

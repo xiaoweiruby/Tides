@@ -1,0 +1,21 @@
+<%= form_with(model: category, local: true) do |form| %>
+  <% if category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
+
+      <ul>
+      <% category.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <span>名称</span><br/>
+  <%= form.text_field :name, id: :category_name %>
+
+  <span>描述</span><br/>
+  <%= form.text_field :description, id: :category_description %>
+  <%= form.submit "保存" %>
+  <%= link_to '返回', categories_path %>
+<% end %>
